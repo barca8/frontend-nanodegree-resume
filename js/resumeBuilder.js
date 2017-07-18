@@ -31,8 +31,8 @@ var projects = {
       "dates":  "2015",
       "description": "this project is a sample project for test.",
       "images": [
-        "https://",
-        "https://"
+        "images/img1.JPG",
+        "images/img2.JPG"
       ]
     }
   ]
@@ -129,3 +129,26 @@ function inName(name) {
 }
 
 $("#main").append(internationalizeButton);
+
+projects.display = function () {
+  projects.projects.forEach(function(item) {
+    $("#projects").append(HTMLprojectStart);
+    var formattedTitle = HTMLprojectTitle.replace("%data%", item.title);
+    $(".project-entry:last").append(formattedTitle);
+  
+    var formattedDates = HTMLprojectDates.replace("%data%", item.dates);
+    $(".project-entry:last").append(formattedDates);
+    
+    var formattedDescription = HTMLprojectDescription.replace("%data%", item.description);
+    $(".project-entry:last").append(formattedDescription);
+
+    if (item.images.length > 0) {
+      item.images.forEach(function(img) {
+        var formattedImage = HTMLprojectImage.replace("%data%", img);
+        $(".project-entry:last").append(formattedImage);
+      });
+    }
+  });
+};
+
+projects.display();
