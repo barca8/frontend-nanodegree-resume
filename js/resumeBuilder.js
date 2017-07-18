@@ -5,21 +5,21 @@ var work = {
       "title": "Developer",
       "location": "Hangzhou",
       "dates": "2008 - 2010",
-      "descripion": "my first job"
+      "description": "my first job"
     },
     {
       "employer": "Baidu",
       "title": "Developer",
       "location": "Beijing",
       "dates": "2010 - 2011",
-      "descripion": "my second job"
+      "description": "my second job"
     },
     {
       "employer": "Huawei",
       "title": "Engineer",
       "location": "Ningbo",
       "dates": "2011 - Now",
-      "descripion": "it's my job now."
+      "description": "it's my job now."
     }
   ]
 };
@@ -111,5 +111,11 @@ work.jobs.forEach(function(item) {
   var formattedEmployerTitle = formattedEmployer + formattedTitle;
 
   $(".work-entry:last").append(formattedEmployerTitle);
+
+  var formattedDates = HTMLworkDates.replace("%data%", item.dates);
+  $(".work-entry:last").append(formattedDates);
+
+  var formattedDescription = HTMLworkDescription.replace("%data%", item.description);
+  $(".work-entry:last").append(formattedDescription);
 });
 
