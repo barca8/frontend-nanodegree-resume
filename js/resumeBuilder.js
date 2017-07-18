@@ -59,7 +59,7 @@ var education = {
   "schools": [
   {
       "name": "Zhejiang University",
-      "city": "Hangzhou",
+      "location": "Hangzhou",
       "degree": "Masters",
       "majors": ["CS"],
       "dates": "2011",
@@ -67,7 +67,7 @@ var education = {
       },
     {
       "name": "Ningbo University",
-      "city": "Ningbo",
+      "location": "Ningbo",
       "degree": "BA",
       "majors": ["CS"],
       "dates": "2008",
@@ -119,3 +119,13 @@ work.jobs.forEach(function(item) {
   $(".work-entry:last").append(formattedDescription);
 });
 
+function inName(name) {
+  name = name.trim().split(" ");
+  console.log(name);
+  name[1] = name[1].toUpperCase();
+  name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
+
+  return name[0] + " " + name [1];
+}
+
+$("#main").append(internationalizeButton);
