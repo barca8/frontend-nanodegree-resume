@@ -21,7 +21,24 @@ var work = {
       "dates": "2011 - Now",
       "description": "it's my job now."
     }
-  ]
+  ],
+  "display": function() {
+    work.jobs.forEach(function(job) {
+      $("#workExperience").append(HTMLworkStart);
+
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", job.employer);
+      var formattedTitle = HTMLworkTitle.replace("%data%", job.title);
+      var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+      $(".work-entry:last").append(formattedEmployerTitle);
+
+      var formattedDates = HTMLworkDates.replace("%data%", job.dates);
+      $(".work-entry:last").append(formattedDates);
+
+      var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
+      $(".work-entry:last").append(formattedDescription);
+    });
+  }
 };
 
 var projects = {
@@ -76,13 +93,13 @@ var bio = {
     var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
     $("#header").append(formattedWelcomeMsg);
 
-      if (bio.skills.length > 0) {
-        $("#header").append(HTMLskillsStart);
-        bio.skills.forEach(function(skill) {
-          var formattedSkill = HTMLskills.replace("%data%", skill);
-          $("#skills").append(formattedSkill);
-        });
-      }
+    if (bio.skills.length > 0) {
+      $("#header").append(HTMLskillsStart);
+      bio.skills.forEach(function(skill) {
+        var formattedSkill = HTMLskills.replace("%data%", skill);
+        $("#skills").append(formattedSkill);
+      });
+    }
   }
 };
 
@@ -117,21 +134,6 @@ var education = {
 
 
 
-work.jobs.forEach(function(item) {
-  $("#workExperience").append(HTMLworkStart);
-
-  var formattedEmployer = HTMLworkEmployer.replace("%data%", item.employer);
-  var formattedTitle = HTMLworkTitle.replace("%data%", item.title);
-  var formattedEmployerTitle = formattedEmployer + formattedTitle;
-
-  $(".work-entry:last").append(formattedEmployerTitle);
-
-  var formattedDates = HTMLworkDates.replace("%data%", item.dates);
-  $(".work-entry:last").append(formattedDates);
-
-  var formattedDescription = HTMLworkDescription.replace("%data%", item.description);
-  $(".work-entry:last").append(formattedDescription);
-});
 
 function inName(name) {
   name = name.trim().split(" ");
@@ -167,5 +169,6 @@ projects.display = function () {
 
 projects.display();
 bio.display();
+work.display();
 
 $("#mapDiv").append(googleMap);
