@@ -129,7 +129,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-image: url(http://foundation.zurb.com/assets/img/home-bg-01.svg);
 }
 
 .flex-box {
