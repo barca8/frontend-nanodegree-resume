@@ -35,6 +35,9 @@ var work = {
       var formattedDates = HTMLworkDates.replace("%data%", job.dates);
       $(".work-entry:last").append(formattedDates);
 
+      var formattedLocation = HTMLworkLocation.replace("%data%", job.location);
+      $(".work-entry:last").append(formattedLocation);
+
       var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
       $(".work-entry:last").append(formattedDescription);
     });
@@ -48,11 +51,31 @@ var projects = {
       "dates":  "2015",
       "description": "this project is a sample project for test.",
       "images": [
-        "images/img1.JPG",
-        "images/img2.JPG"
+        "http://lorempixel.com/320/240/business/1",
+        "http://lorempixel.com/320/240/business/2"
       ]
     }
-  ]
+  ],
+  "display": function() {
+    projects.projects.forEach(function(item) {
+      $("#projects").append(HTMLprojectStart);
+      var formattedTitle = HTMLprojectTitle.replace("%data%", item.title);
+      $(".project-entry:last").append(formattedTitle);
+
+      var formattedDates = HTMLprojectDates.replace("%data%", item.dates);
+      $(".project-entry:last").append(formattedDates);
+
+      var formattedDescription = HTMLprojectDescription.replace("%data%", item.description);
+      $(".project-entry:last").append(formattedDescription);
+
+      if (item.images.length > 0) {
+        item.images.forEach(function(img) {
+          var formattedImage = HTMLprojectImage.replace("%data%", img);
+          $(".project-entry:last").append(formattedImage);
+        });
+      }
+    });
+  }
 };
 
 var bio = {
@@ -146,29 +169,9 @@ function inName(name) {
 
 $("#main").append(internationalizeButton);
 
-projects.display = function () {
-  projects.projects.forEach(function(item) {
-    $("#projects").append(HTMLprojectStart);
-    var formattedTitle = HTMLprojectTitle.replace("%data%", item.title);
-    $(".project-entry:last").append(formattedTitle);
-  
-    var formattedDates = HTMLprojectDates.replace("%data%", item.dates);
-    $(".project-entry:last").append(formattedDates);
-    
-    var formattedDescription = HTMLprojectDescription.replace("%data%", item.description);
-    $(".project-entry:last").append(formattedDescription);
 
-    if (item.images.length > 0) {
-      item.images.forEach(function(img) {
-        var formattedImage = HTMLprojectImage.replace("%data%", img);
-        $(".project-entry:last").append(formattedImage);
-      });
-    }
-  });
-};
-
-projects.display();
 bio.display();
 work.display();
+projects.display();
 
 $("#mapDiv").append(googleMap);
