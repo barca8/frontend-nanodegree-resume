@@ -97,8 +97,7 @@ var bio = {
     var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
     var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
 
-    $("#topContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-    $("#footerContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
+    $("#topContacts, #footerContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
 
     var formattedPic = HTMLbioPic.replace("%data%",bio.biopic);
     var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
